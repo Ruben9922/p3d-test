@@ -33,6 +33,8 @@ void draw() {
     if (ball.radius <= 0) {
       ballList.remove(i);
     } else {
+      noStroke();
+      fill(255);
       ball.display();
       ball.move();
       ball.decreaseRadius();
