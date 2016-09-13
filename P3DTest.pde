@@ -1,9 +1,8 @@
-final int ballStartInterval = 1;
+final int BALL_START_INTERVAL = 1;
+
 PVector windowCenter;
-
 int ballStarts = 0;
-
-ArrayList<Ball> ballList = new ArrayList<Ball>((60 * Ball.maxRadius) / (ballStartInterval * Ball.radiusDecrement));
+ArrayList<Ball> ballList = new ArrayList<Ball>((60 * Ball.MAX_RADIUS) / (BALL_START_INTERVAL * Ball.RADIUS_DECREMENT));
 
 void setup() {
   size(800, 600, P3D);
@@ -24,7 +23,7 @@ void draw() {
   box(100);
   popMatrix();
 
-  if (mousePressed && ++ballStarts % ballStartInterval == 0) {
+  if (mousePressed && ++ballStarts % BALL_START_INTERVAL == 0) {
     ballList.add(new Ball());
     ballStarts = 0;
   }
@@ -43,8 +42,8 @@ void draw() {
 }
 
 class Ball {
-  static final int maxRadius = 20;
-  static final int radiusDecrement = 1;
+  static final int MAX_RADIUS = 20;
+  static final int RADIUS_DECREMENT = 1;
 
   PVector center;
   int radius;
@@ -55,7 +54,7 @@ class Ball {
   }
 
   Ball() {
-    this(random(-100, 101), random(-100, 101), random(-100, 101), (int)random(maxRadius + 1));
+    this(random(-100, 101), random(-100, 101), random(-100, 101), (int)random(MAX_RADIUS + 1));
   }
 
   void display() {
@@ -70,6 +69,6 @@ class Ball {
   }
 
   void decreaseRadius() {
-    radius -= radiusDecrement;
+    radius -= RADIUS_DECREMENT;
   }
 }
